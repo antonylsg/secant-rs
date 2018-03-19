@@ -1,0 +1,6 @@
+[package]
+name = "secant"
+version = "0.1.0"
+authors = ["Antony Lesage <lesage.antony@gmail.com>"]
+
+[dependencies]
