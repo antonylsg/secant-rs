@@ -1,19 +1,16 @@
 use error::Error;
 
-
 #[derive(Debug)]
 pub struct Output {
     pub x: f64,
     pub iter: usize,
 }
 
-
 pub struct SolverBuilder {
     tol: Option<f64>,
     step: Option<f64>,
     max_iter: Option<usize>,
 }
-
 
 impl SolverBuilder {
     pub fn new() -> SolverBuilder {
@@ -48,14 +45,12 @@ impl SolverBuilder {
     }
 }
 
-
 #[derive(Debug)]
 pub struct Solver {
     tol: f64,
     step: f64,
     max_iter: usize,
 }
-
 
 impl Default for Solver {
     fn default() -> Solver {
@@ -67,9 +62,9 @@ impl Default for Solver {
     }
 }
 
-
 impl Solver {
-    pub fn solve<F>(&self, mut x0: f64, mut f: F) -> Result<Output, Error> where
+    pub fn solve<F>(&self, mut x0: f64, mut f: F) -> Result<Output, Error>
+    where
         F: FnMut(f64) -> f64,
     {
         let mut x1 = if x0 >= 0.0 {
@@ -90,13 +85,10 @@ impl Solver {
             }
 
             let dx = y1 * (x1 - x0) / (y1 - y0);
-            let  x = x1 - dx;
+            let x = x1 - dx;
 
             if dx.abs() < self.tol {
-                return Ok(Output {
-                    x,
-                    iter,
-                });
+                return Ok(Output { x, iter });
             }
 
             x0 = x1;
