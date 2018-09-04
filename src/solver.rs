@@ -21,22 +21,22 @@ impl SolverBuilder {
         }
     }
 
-    pub fn tol(&mut self, tol: f64) -> &mut Self {
+    pub fn tol(mut self, tol: f64) -> Self {
         self.tol = Some(tol);
         self
     }
 
-    pub fn step(&mut self, step: f64) -> &mut Self {
+    pub fn step(mut self, step: f64) -> Self {
         self.step = Some(step);
         self
     }
 
-    pub fn max_iter(&mut self, max_iter: usize) -> &mut Self {
+    pub fn max_iter(mut self, max_iter: usize) -> Self {
         self.max_iter = Some(max_iter);
         self
     }
 
-    pub fn build(&self) -> Solver {
+    pub fn build(self) -> Solver {
         Solver {
             tol: self.tol.unwrap_or(1.48_e-8),
             step: self.step.unwrap_or(1.0_e-4),
