@@ -6,6 +6,7 @@ pub struct Output {
     pub iter: usize,
 }
 
+#[derive(Default)]
 pub struct SolverBuilder {
     tol: Option<f64>,
     step: Option<f64>,
@@ -13,14 +14,6 @@ pub struct SolverBuilder {
 }
 
 impl SolverBuilder {
-    pub fn new() -> SolverBuilder {
-        SolverBuilder {
-            tol: None,
-            step: None,
-            max_iter: None,
-        }
-    }
-
     pub fn tol(mut self, tol: f64) -> Self {
         self.tol = Some(tol);
         self

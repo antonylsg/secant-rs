@@ -14,7 +14,7 @@ fn solve_square() {
 
 #[test]
 fn solve_square_lower_tol() {
-    let solver = SolverBuilder::new().tol(1.0_e-9).build();
+    let solver = SolverBuilder::default().tol(1.0_e-9).build();
     let expected = 0.0;
     let result = solver.solve(1.0, |x| x.powi(2)).unwrap();
 
