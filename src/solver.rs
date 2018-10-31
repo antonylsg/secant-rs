@@ -1,4 +1,4 @@
-use error::Error;
+use crate::error::Error;
 
 #[derive(Debug)]
 pub struct Output {

@@ -3,5 +3,5 @@ mod solver;
 #[cfg(test)]
 mod tests;
 
-pub use error::*;
-pub use solver::*;
+pub use crate::error::*;
+pub use crate::solver::*;

@@ -1,5 +1,5 @@
-use solver::Solver;
-use solver::SolverBuilder;
+use crate::solver::Solver;
+use crate::solver::SolverBuilder;
 
 #[test]
 fn solve_square() {
