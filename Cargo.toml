@@ -2,5 +2,6 @@
 name = "secant"
 version = "0.1.0"
 authors = ["Antony Lesage <lesage.antony@gmail.com>"]
+edition = "2018"
 
 [dependencies]
