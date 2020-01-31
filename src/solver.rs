@@ -9,13 +9,13 @@ pub struct Output<T> {
 }
 
 #[derive(Default)]
-pub struct SolverBuilder<T> {
+pub struct Builder<T> {
     tol: Option<T>,
     step: Option<T>,
     max_iter: Option<usize>,
 }
 
-impl<T: Float> SolverBuilder<T> {
+impl<T: Float> Builder<T> {
     pub fn tol(mut self, tol: T) -> Self {
         self.tol = Some(tol);
         self
