@@ -1,12 +1,24 @@
 use num_traits::Float;
 
-use crate::error::Error;
+/// Maximal iteration reached.
+#[derive(Debug)]
+pub struct MaxIterError(pub usize);
+
+impl std::fmt::Display for MaxIterError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Maximal iteration ({}) reached", self.0)
+    }
+}
+
+impl std::error::Error for MaxIterError {}
 
 #[derive(Debug)]
 pub struct Output<T> {
     pub x: T,
     pub iter: usize,
 }
+
+pub type Result<T> = std::result::Result<Output<T>, MaxIterError>;
 
 #[derive(Default)]
 pub struct Builder<T> {
@@ -58,7 +70,7 @@ impl<T: Float> Default for Solver<T> {
 }
 
 impl<T: Float> Solver<T> {
-    pub fn solve<F>(&self, mut x0: T, mut f: F) -> Result<Output<T>, Error>
+    pub fn solve<F>(&self, mut x0: T, mut f: F) -> Result<T>
     where
         F: FnMut(T) -> T,
     {
@@ -92,6 +104,6 @@ impl<T: Float> Solver<T> {
             y1 = f(x1);
         }
 
-        Err(Error::MaxIter(self.max_iter))
+        Err(MaxIterError(self.max_iter))
     }
 }
